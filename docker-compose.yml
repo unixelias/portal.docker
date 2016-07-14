@@ -1,0 +1,32 @@
+haproxy:
+  image: eeacms/haproxy
+  restart: 'always'
+  ports:
+  - 8080:5000
+  - 1936:1936
+  links:
+  - plonegovbridg
+  environment:
+  - BACKENDS_PORT=8080
+  - SERVICE_NAMES=plone
+
+plonegovbridg:
+  build: docker
+  links:
+  - zeoserver
+  volumes_from:
+  - 'plone_data'
+  environment:
+  - ZEO_ADDRESS=zeoserver:8100
+
+plone_data:
+  container_name: plone_data
+  image: busybox
+  volumes:
+  - '/data/filestorage'
+  - '/data/blobstorage'
+  command: ['chown', '-R', '500:500', '/data']
+
+zeoserver:
+  image: plone/plone:4.3.9
+  command: zeoserver
