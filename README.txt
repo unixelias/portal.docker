@@ -1,6 +1,6 @@
-=======================================================
-Docker para a Identidade Digital de Governo Eletrônico
-=======================================================
+============================================================
+Docker Plone e a Identidade Digital de Governo Eletrônico
+============================================================
 
 Inicialmente clone o repositório e entre no diretório criado.
 
