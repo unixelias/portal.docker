@@ -16,6 +16,7 @@ plonegovbridg:
   - zeoserver
   volumes_from:
   - 'plone_data'
+  - 'plone_data_backup'
   environment:
   - ZEO_ADDRESS=zeoserver:8100
 
@@ -23,10 +24,18 @@ plone_data:
   container_name: plone_data
   image: busybox
   volumes:
-  - '/data/filestorage'
-  - '/data/blobstorage'
+  - './filestorage:/data/filestorage'
+  - './blobstorage:/data/blobstorage'
+  command: ['chown', '-R', '500:500', '/data']
+
+plone_data_backup:
+  container_name: plone_data_backup
+  image: busybox
+  volumes:
+  - './backups:/data/backups'
+  - './blobstoragebackups:/data/blobstoragebackups'
   command: ['chown', '-R', '500:500', '/data']
 
 zeoserver:
-  image: plone/plone:4.3.9
+  image: plone/plone:4.3.9-alpine
   command: zeoserver
