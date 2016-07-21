@@ -39,3 +39,27 @@ plone_data_backup:
 zeoserver:
   image: plone/plone:4.3.9-alpine
   command: zeoserver
+
+cadvisor:
+  container_name: 'cadvisor'
+  image: 'google/cadvisor:latest'
+  privileged: true
+  volumes:
+    - '/:/rootfs:ro'
+    - '/var/run:/var/run:rw'
+    - '/sys:/sys:ro'
+    - '/var/lib/docker/:/var/lib/docker:ro'
+  ports:
+    - '8181:8080'
+  command: ['--storage_duration=10m']
+
+docker-cleanup:
+  container_name: 'docker-cleanup'
+  image: 'meltwater/docker-cleanup:latest'
+  volumes:
+    - '/var/run/docker.sock:/var/run/docker.sock:rw'
+    - '/var/lib/docker:/var/lib/docker:rw'
+  environment:
+    - 'KEEP_CONTAINERS_NAMED=plone_data plone_data_backup'
+    - 'KEEP_IMAGES=busybox'
+
