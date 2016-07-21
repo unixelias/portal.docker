@@ -5,13 +5,13 @@ haproxy:
   - 8080:5000
   - 1936:1936
   links:
-  - plonegovbridg
+  - idgplone
   environment:
   - BACKENDS_PORT=8080
-  - SERVICE_NAMES=plone
+  - SERVICE_NAMES=idgplone
 
-plonegovbridg:
-  build: docker
+idgplone:
+  image: caduvieira/idgplone
   links:
   - zeoserver
   volumes_from:
