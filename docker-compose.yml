@@ -5,12 +5,12 @@ haproxy:
   - 8080:5000
   - 1936:1936
   links:
-  - idgplone
+  - plonegovbridg
   environment:
   - BACKENDS_PORT=8080
   - SERVICE_NAMES=plone
 
-idgplone:
+plonegovbridg:
   image: caduvieira/idgplone:1.1.4-alpine
   links:
   - zeoserver
@@ -37,23 +37,10 @@ plone_data_backup:
   command: ['chown', '-R', '500:500', '/data']
 
 zeoserver:
+  container_name: 'zeoserver'  
   image: caduvieira/idgplone:1.1.4-alpine
   command: ['zeoserver']
-  expose: 
-    - "8100"
 
-cadvisor:
-  container_name: 'cadvisor'
-  image: 'google/cadvisor:latest'
-  privileged: true
-  volumes:
-    - '/:/rootfs:ro'
-    - '/var/run:/var/run:rw'
-    - '/sys:/sys:ro'
-    - '/var/lib/docker/:/var/lib/docker:ro'
-  ports:
-    - '8181:8080'
-  command: ['--storage_duration=10m']
 
 
 

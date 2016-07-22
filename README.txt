@@ -13,6 +13,10 @@ Para escalar os números de clientes ZEO:
 
 Depois de escalar pare e remova a imagem do haproxy e suba novamente.
 
+    $ docker-compose stop haproxy && docker-compose rm haproxy
+
+    $ docker-compose up -d
+
 Para backup do site Plone digite:
 
     $ docker-compose run plonegovbridg bin/backup
