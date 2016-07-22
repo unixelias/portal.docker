@@ -11,7 +11,7 @@ haproxy:
   - SERVICE_NAMES=plone
 
 plonegovbridg:
-  image: caduvieira/idgplone:1.1.4-alpine
+  image: caduvieira/plonegovbridg:1.1.4-alpine
   links:
   - zeoserver
   volumes_from:
@@ -38,7 +38,7 @@ plone_data_backup:
 
 zeoserver:
   container_name: 'zeoserver'  
-  image: caduvieira/idgplone:1.1.4-alpine
+  image: caduvieira/plonegovbridg:1.1.4-alpine
   command: ['zeoserver']
 
 
