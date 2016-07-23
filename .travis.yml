@@ -12,6 +12,6 @@ install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 - firefox -v
-- docker run --rm caduvieira/plonegovbridg bin/test -v -vv -s brasil.gov.portal
+- docker run --rm -e BUILDOUT_EGGS="plone.theme.winter" caduvieira/plonegovbridg bin/test -v -vv -s brasil.gov.portal
 script:
 - true
