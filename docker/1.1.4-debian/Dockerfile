@@ -15,5 +15,7 @@ RUN buildDeps="curl sudo python-setuptools python-dev build-essential libssl-dev
  && rm -rf /plone/buildout-cache/downloads/* \
  && find /plone \( -type f -a -name '*.pyc' -o -name '*.pyo' \) -exec rm -rf '{}' +
 
+RUN sh -e /etc/init.d/xvfb start
 USER plone
-
+RUN export DISPLAY=:99.0
+RUN firefox -v
