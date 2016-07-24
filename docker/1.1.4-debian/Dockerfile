@@ -2,6 +2,7 @@ FROM plone/plone:4.3.9
 
 USER plone
 COPY site.cfg /plone/instance/
+COPY xvfb /etc/init.d/
 
 USER root
 # Para Pillow 2.7.0
