@@ -8,10 +8,9 @@ matrix:
 before_install:
 - docker build -t caduvieira/plonegovbridg docker/1.1.4-debian
 install:
-- true
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 - firefox -v
-- docker run --rm caduvieira/plonegovbridg bin/test -v -vv -s brasil.gov.portal
+- docker run --rm caduvieira/plonegovbridg bin/test -v -vv
 script:
 - true
