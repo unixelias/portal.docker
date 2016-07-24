@@ -2,7 +2,6 @@ FROM plone/plone:4.3.9
 
 USER plone
 COPY site.cfg /plone/instance/
-COPY xvfb /etc/init.d/
 
 USER root
 # Para Pillow 2.7.0
@@ -15,6 +14,9 @@ RUN buildDeps="curl sudo python-setuptools python-dev build-essential libssl-dev
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /plone/buildout-cache/downloads/* \
  && find /plone \( -type f -a -name '*.pyc' -o -name '*.pyo' \) -exec rm -rf '{}' +
+
+COPY xvfb /etc/init.d/
+RUN chmod +x /etc/init.d/xvfb
 
 RUN /etc/init.d/xvfb start
 USER plone
