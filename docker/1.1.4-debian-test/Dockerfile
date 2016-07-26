@@ -5,8 +5,8 @@ LABEL Version="1.1.4-test"
 LABEL Architecture="x86_64"
 
 USER root
-# libdbus-glib-1-2
-RUN testDeps="xserver-xephyr xvfb wget libxrender1 libasound2 libglib2.0-0 libgtk2.0-0 bzip2" \
+
+RUN testDeps="xserver-xephyr xvfb wget libxrender1 libasound2 libglib2.0-0 libdbus-glib-1-2 libgtk2.0-0 bzip2" \
  && apt-get update \
  && apt-get install -y --no-install-recommends $testDeps 
 
