@@ -5,9 +5,11 @@ services:
   - docker
 matrix:
   fast_finish: true
-before_install:
-- docker build -t caduvieira/plonegovbridg docker/1.1.4-debian
-install:
-- docker run --rm caduvieira/plonegovbridg bin/test -v -vv
+before_script:
+- docker build -t caduvieira/plonegovbridg:1.1.4-debian docker/1.1.4-debian
+- docker build -t caduvieira/plonegovbridg:1.1.4-debian-test docker/1.1.4-debian-test
 script:
-- true
+- docker run --rm caduvieira/plonegovbridg:1.1.4-debian-test bin/test -v -vv
+- cd docker/1.1.4-debian
+- docker run -it --rm --privileged -v `pwd`:/root/ projectatomic/dockerfile-lint dockerfile_lint
+
