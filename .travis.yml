@@ -6,10 +6,10 @@ services:
 matrix:
   fast_finish: true
 before_script:
-- docker build -t caduvieira/plonegovbridg:1.1.4-debian docker/1.1.4-debian
-- docker build -t caduvieira/plonegovbridg:1.1.4-debian-test docker/1.1.4-debian-test
+- docker build -t caduvieira/plonegovbridg:1.1.4 docker/1.1.4-debian
+- docker build -t caduvieira/plonegovbridg:1.1.4-test docker/1.1.4-debian-test
 script:
-- docker run --rm caduvieira/plonegovbridg:1.1.4-debian-test bin/test -v -vv
+- docker run --rm caduvieira/plonegovbridg:1.1.4-test bin/test -v -vv
 - cd docker/1.1.4-debian
 - docker run -it --rm --privileged -v `pwd`:/root/ projectatomic/dockerfile-lint dockerfile_lint
 

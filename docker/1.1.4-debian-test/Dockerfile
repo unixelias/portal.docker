@@ -1,4 +1,4 @@
-FROM caduvieira/plonegovbridg
+FROM caduvieira/plonegovbridg:1.1.4
 MAINTAINER Carlos Vieira <edu.carlos.vieira@gmail.com>
 LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone - Imagem para testes"
 LABEL Version="1.1.4-test"

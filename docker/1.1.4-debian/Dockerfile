@@ -1,7 +1,7 @@
-FROM plone/plone:4.3.9-debian
+FROM plone/plone:4.3.9
 MAINTAINER Carlos Vieira <edu.carlos.vieira@gmail.com>
 LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone"
-LABEL Version="1.1.4-debian"
+LABEL Version="1.1.4"
 LABEL Architecture="x86_64"
 
 USER plone
