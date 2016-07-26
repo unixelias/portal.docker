@@ -27,7 +27,6 @@ COPY xvfb /etc/init.d/
 RUN chmod +x /etc/init.d/xvfb
 ENV DISPLAY :99.0
 RUN /etc/init.d/xvfb start
-RUN firefox -v
 
 USER plone
 
