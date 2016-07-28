@@ -1,6 +1,6 @@
 FROM plone/plone:4.3.9-alpine
 MAINTAINER Carlos Vieira <edu.carlos.vieira@gmail.com>
-LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone"
+LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone" \
       Version="1.1.4-alpine" \
       Architecture="x86_64" \
       Dockerfile_location="/root/buildinfo"
