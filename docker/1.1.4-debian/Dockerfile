@@ -1,8 +1,8 @@
 FROM plone/plone:4.3.9
 MAINTAINER Carlos Vieira <edu.carlos.vieira@gmail.com>
-LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone"
-LABEL Version="1.1.4"
-LABEL Architecture="x86_64"
+LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone" \
+      Version="1.1.4" \
+      Architecture="x86_64"
 
 USER plone
 COPY site.cfg /plone/instance/

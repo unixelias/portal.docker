@@ -13,8 +13,9 @@ script:
 - cd docker/1.1.4-debian
 - docker run -it --rm --privileged -v `pwd`:/root/ projectatomic/dockerfile-lint dockerfile_lint
 after_success:
-- docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-- docker push caduvieira/plonegovbridg hub.docker.com
+- docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" hub.docker.com
+- docker push caduvieira/plonegovbridg 
+
 env:
   global:
   - secure: ptC0He5RsoPRbnxs4fCVPr4hWd85XDjBUt48Hrv7/Bc+LUp0W6xGxGUhMjyMPcdORRb86lf/m/bEW3Kn0/pqWIBZuLesuwVuKP7xXVehj+7/JrHGygzUGiK/N6Y68t3Uk3p3861RJdnDOfYnVCCzbV4CwNTX+r3/A9IqoqHAQmPRIt7MnCdSevc9lwW7L/LwGAHyoRQalmCFSzxtlCWdd3laNgZBbTvM2uFlUkxh8EuhCG6vmN/wmu8tr6p2XGutjdoTdhcJyI5wFgR3QXsWyx1hjiaXz+DeU+T5hurBvgu2x/3sbtlZbjEM2ytvZ3deshlH+QceuGyK5pjBt5Lt2cFVB/vlTiCLGR+6NopXd1ahf17xXADm44NkPiner4enYqQN35GusJvwRNE9mfc1xdIGFQhJT+JEoj5uyObi1vDPs6/Z92t7+4NjnUUoxrfqXDFKHPAhGP4qPxnpDbdsmwxm0XBhMCaPiu9TEL7xkYDy9Zsaad8w/Gq/5qPvrvlDuWimna1upEnUngHufDTcSU4P+Pvh3/xUbFtw3NcIIS7yBzvaHkrS4oAsNoX93xnAwV2v1UTtI4JdRfXdAE1h6loTTdO+2j3P6/TKglPi2Vjldbv1ONebvzM3ki9lKSWZceTgqDOokEnHesLS7kxXRXjq2A31rBcVhoLtw5LNGx4=
