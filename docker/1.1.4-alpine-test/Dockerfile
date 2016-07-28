@@ -2,9 +2,11 @@ FROM caduvieira/plonegovbridg:1.1.4-alpine
 MAINTAINER Carlos Vieira <edu.carlos.vieira@gmail.com>
 LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone - Imagem para testes" \
       Version="1.1.4-alpine-test" \ 
-      Architecture="x86_64"
+      Architecture="x86_64" \
+      Dockerfile_location="/root/buildinfo"
 
 USER root
+COPY Dockerfile /root/buildinfo
 
 RUN testDeps="dbus firefox-esr fontconfig python ttf-freefont xvfb xvfb ca-certificates" \
   && apk add --no-cache $testDeps

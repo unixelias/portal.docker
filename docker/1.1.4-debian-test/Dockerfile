@@ -2,9 +2,11 @@ FROM caduvieira/plonegovbridg:1.1.4
 MAINTAINER Carlos Vieira <edu.carlos.vieira@gmail.com>
 LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone - Imagem para testes" \
       Version="1.1.4-test" \
-      Architecture="x86_64"
+      Architecture="x86_64" \
+      Dockerfile_location="/root/buildinfo"
 
 USER root
+COPY Dockerfile /root/buildinfo
 
 RUN testDeps="xserver-xephyr xvfb wget libxrender1 libasound2 libglib2.0-0 libdbus-glib-1-2 libgtk2.0-0 bzip2" \
  && apt-get update \

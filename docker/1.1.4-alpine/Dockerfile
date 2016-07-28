@@ -1,13 +1,15 @@
 FROM plone/plone:4.3.9-alpine
 MAINTAINER Carlos Vieira <edu.carlos.vieira@gmail.com>
 LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone"
-LABEL Version="1.1.4-alpine"
-LABEL Architecture="x86_64"
+      Version="1.1.4-alpine" \
+      Architecture="x86_64" \
+      Dockerfile_location="/root/buildinfo"
 
 USER plone
 COPY site.cfg /plone/instance/
 
 USER root
+COPY Dockerfile /root/buildinfo
 # Para Pillow 2.7.0
 RUN apk add --no-cache --virtual .build-deps \
     curl \
