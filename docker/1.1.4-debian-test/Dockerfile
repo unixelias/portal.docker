@@ -1,8 +1,8 @@
 FROM caduvieira/plonegovbridg:1.1.4
 MAINTAINER Carlos Vieira <edu.carlos.vieira@gmail.com>
-LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone - Imagem para testes"
-LABEL Version="1.1.4-test"
-LABEL Architecture="x86_64"
+LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone - Imagem para testes" \
+      Version="1.1.4-test" \
+      Architecture="x86_64"
 
 USER root
 
@@ -21,16 +21,12 @@ USER plone
 COPY test.cfg /plone/instance/
 RUN bin/buildout -c test.cfg -t 300
 
-USER root
-
-COPY xvfb /etc/init.d/
-RUN chmod +x /etc/init.d/xvfb
 ENV DISPLAY :99.0
-RUN /etc/init.d/xvfb start
 
-USER plone
+USER root
+ADD back-xvfb .
+RUN chmod +x back-xvfb 
 
 EXPOSE 8080
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["start"]
+CMD ["./back-xvfb"]
