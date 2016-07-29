@@ -6,10 +6,11 @@ services:
 matrix:
   fast_finish: true
 before_script:
-- ./linter.sh
+- "./linter.sh"
 script:
-- ./build.sh 
+- "./build.sh"
 after_success:
-- ./repo_build.sh
-
-
+- "./repo_build.sh"
+env:
+  global:
+    secure: nUz8msIsXEtLk0ZnHOtiUssxs+sIr/AWVy38W44Y7ULghMv8gKThvLJIEXk0wvUxfbazhhnd09lp+VfJO9pLlKaKiebQ9KdToj7SXW1EQkR8cVkjaIHUTkG/SGN0LGJ5+hzxvsdhvESkj304sP/A5iEbPvOpDGlarxDY4gCfxX5hrHTD98/PFzkzj8sU8SOQbDZjnxW+oySxbceZa21yOY22nSpH1ML+vGUIjcCASPABm9WnU2RQc6vzh8Hf3Fz/py/jxvjFRx/bGbxIKQK5ZJ8j9169UE0e6M3yV8eKTf6Nw1CfNvxNUwUTseIWwb7kfnhrHtxwFdAuokcKAMHGBIpJZQsX/RbigpqRbclEB6RRCoMFwswRQANIzUzu9B8r1aHfaHCwbD2W2VFLn3RdXCUeXegKIfb10EbWku7WxUZQOx0N4oJ6MgMnGDzGzOmV4FKO81kujBv7zLh2gS6dIyuCAelQDbmLHf7DZ53JUKG9fNpgz4oJb5COp9CT3UZ4/bzCTGpkZS6POqZiXtNAdMYZWzNjT2jEHugelK5IbQzgpRYmHvbwlwFzj4SRN1YWlJINjJLf0LecoTvp/fbqVMHBl1q06j+REycIlnqEVnlfboX8u3wr+ic9Lt2Ttryam/PX12nv5MDpbQGHCQo+t/OI1yoxLm7QJ1k2zQY8c1A=
