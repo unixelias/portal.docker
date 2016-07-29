@@ -33,3 +33,7 @@ RUN apk add --no-cache --virtual .build-deps \
 
 USER plone
 
+EXPOSE 8080
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["start"]
