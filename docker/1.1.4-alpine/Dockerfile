@@ -1,4 +1,4 @@
-FROM plone/plone:4.3.9-alpine
+FROM plone:4.3-alpine
 MAINTAINER Carlos Vieira <edu.carlos.vieira@gmail.com>
 LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone" \
       Version="1.1.4-alpine" \
