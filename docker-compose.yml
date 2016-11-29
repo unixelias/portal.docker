@@ -1,5 +1,4 @@
 
-
   haproxy:
     image: eeacms/haproxy
     restart: 'always'
@@ -13,7 +12,7 @@
     - SERVICE_NAMES=plone
 
   plonegovbridg:
-    image: caduvieira/plonegovbridg:1.1.4-alpine
+    image: caduvieira/plonegovbridg:1.1.4
     links:
     - zeoserver
     volumes_from:
@@ -40,7 +39,7 @@
 
   zeoserver:
     container_name: 'zeoserver'    
-    image: caduvieira/plonegovbridg:1.1.4-alpine
+    image: caduvieira/plonegovbridg:1.1.4
     command: ['zeoserver']
 
 
