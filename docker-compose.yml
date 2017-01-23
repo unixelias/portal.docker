@@ -19,7 +19,6 @@
     - 'plone_data_backup'
     environment:
     - ZEO_ADDRESS=zeoserver:8100
-    - PLONE_ADDONS="eea.facetednavigation"
 
   plone_data:
     container_name: plone_data
