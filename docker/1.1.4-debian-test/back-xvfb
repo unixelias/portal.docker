@@ -1,4 +1,0 @@
-/usr/bin/Xvfb $DISPLAY -ac -screen 0 1024x768x16 +extension RANDR -nolisten tcp &
-sleep 10
-firefox &
-/plone/instance/bin/test 
