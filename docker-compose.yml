@@ -11,7 +11,7 @@
     - SERVICE_NAMES=plone
 
   plonegovbridg:
-    image: caduvieira/plonegovbridg:1.1.4
+    image: unixelias/portal.docker:latest
     links:
     - zeoserver
     volumes_from:
@@ -19,6 +19,7 @@
     - 'plone_data_backup'
     environment:
     - ZEO_ADDRESS=zeoserver:8100
+    - PLONE_ADDONS="eea.facetednavigation"
 
   plone_data:
     container_name: plone_data
@@ -53,8 +54,8 @@
     command: ['chown', '-R', '500:500', '/data']
 
   zeoserver:
-    hostname: 'zeoserver'    
-    image: caduvieira/plonegovbridg:1.1.4
+    hostname: 'zeoserver'
+    image: unixelias/portal.docker:latest
     command: ['zeoserver']
     volumes_from:
     - 'plone_data_zeo'
