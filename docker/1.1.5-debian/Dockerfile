@@ -1,7 +1,7 @@
 FROM plone:4.3
 MAINTAINER Elias Alves <elias.alves@ufvjm.edu.br>
 LABEL Name="Identidade Digital para o Governo Brasileiro Federal para Plone" \
-      Version="1.1.5" \
+      Version="1.1.5.1" \
       Architecture="x86_64" \
       Dockerfile_location="/root/buildinfo"
 
