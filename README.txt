@@ -9,7 +9,7 @@ Para subir o cluster digite:
 
 Para escalar os números de clientes ZEO:
 
-    $ docker-compose scale plonegovbridg=4
+    $ docker-compose scale ploneidg=4
 
 Depois de escalar pare e remova a imagem do haproxy e suba novamente.
 
@@ -19,10 +19,10 @@ Depois de escalar pare e remova a imagem do haproxy e suba novamente.
 
 Para backup do site Plone digite:
 
-    $ docker-compose run plonegovbridg bin/backup
+    $ docker-compose run ploneidg bin/backup
 
 Para restaurar o backup para o serviço:
 
-    $ docker-compose run plonegovbridg bin/restore
+    $ docker-compose run ploneidg bin/restore
 
 Para ver mais sobre o docker e o plone veja a documentação em <https://github.com/plone/plone.docker/blob/master/docs/usage.rst>
