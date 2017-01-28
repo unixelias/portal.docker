@@ -11,7 +11,7 @@
     - SERVICE_NAMES=plone
 
   plonegovbridg:
-    image: unixelias/portal.docker:latest
+    image: unixelias/plone.idg:latest
     links:
     - zeoserver
     volumes_from:
@@ -54,7 +54,7 @@
 
   zeoserver:
     hostname: 'zeoserver'
-    image: unixelias/portal.docker:latest
+    image: unixelias/plone.idg:latest
     command: ['zeoserver']
     volumes_from:
     - 'plone_data_zeo'
