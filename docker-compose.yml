@@ -32,8 +32,8 @@
     container_name: plone_data_backup
     image: busybox
     volumes:
-    - '/data/backups'
-    - '/data/blobstoragebackups'
+    - './data/backups:/data/backups'
+    - './data/blobstoragebackups:/data/blobstoragebackups'
     command: ['chown', '-R', '500:500', '/data']
 
   plone_data_zeo:
@@ -48,8 +48,8 @@
     container_name: plone_data_backup_zeo
     image: busybox
     volumes:
-    - '/data/backups'
-    - '/data/blobstoragebackups'
+    - './data/backups:/data/backups'
+    - './data/blobstoragebackups:/data/blobstoragebackups'
     command: ['chown', '-R', '500:500', '/data']
 
   zeoserver:
