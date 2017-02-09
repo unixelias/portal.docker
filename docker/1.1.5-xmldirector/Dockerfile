@@ -30,7 +30,7 @@ RUN buildDeps="curl sudo python-setuptools python-dev build-essential libldap2-d
 
 RUN sudo -u plone bin/buildout -c site.cfg -t 300
 
-USER plone
+USER root
 WORKDIR /home/plone
 
 RUN curl -LO http://downloads.sourceforge.net/exist/Stable/2.2/eXist-db-setup-2.2.jar
@@ -48,7 +48,6 @@ RUN ../bin/python bootstrap.py --setuptools-version=7.0 --version=2.2.5 -c build
 
 RUN bin/buildout -c demo.cfg
 
-USER root
 RUN apt-get purge -y --auto-remove $buildDeps \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /plone/buildout-cache/downloads/* \
