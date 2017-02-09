@@ -18,7 +18,7 @@ RUN buildDeps="curl sudo python-setuptools python-dev build-essential libldap2-d
 
 RUN echo deb http://ftp.de.debian.org/debian jessie-backports main >> /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get install -y  python-virtualenv zlib-dev git-core wv openjdk-8-jdk openjdk-8-jre openjdk-8-jdk-headless expect gettext net-tools libprocps-dev patch libffi-dev libcurl4-openssl-dev
+RUN apt-get install -y  python-virtualenv zlib1g-dev git-core wv openjdk-8-jdk openjdk-8-jre openjdk-8-jdk-headless expect gettext net-tools libprocps-dev patch libffi-dev libcurl4-openssl-dev
 
 RUN sudo -u plone bin/buildout -c site.cfg -t 300
 
