@@ -40,6 +40,7 @@ RUN rm eXist-db-setup-2.2.jar exist-setup.cmd
 ENV EXIST_HOME /home/plone/exist
 
 RUN virtualenv .
+RUN pip install -U setuptools
 RUN bin/pip install grampg
 RUN git clone https://github.com/xml-director/xmldirector.plonecore.git
 WORKDIR xmldirector.plonecore
