@@ -8,4 +8,4 @@ shopt -s extglob
 #  esac
 #done
 
--test docker build -t unixelias/plone.idg:1.1.5-x docker/1.1.5-xmldirector
+docker build -t unixelias/plone.idg:1.1.5-x docker/1.1.5-xmldirector
