@@ -48,11 +48,14 @@ RUN ../bin/python bootstrap.py --setuptools-version=7.0 --version=2.2.5 -c build
 
 RUN bin/buildout -c demo.cfg
 
+USER root
 RUN apt-get purge -y --auto-remove $buildDeps \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /plone/buildout-cache/downloads/* \
   && apt-get clean \
   && find /plone \( -type f -a -name '*.pyc' -o -name '*.pyo' \) -exec rm -rf '{}' +
+
+USER plone
 
 EXPOSE 8080 8443 12020
 
