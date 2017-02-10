@@ -24,7 +24,7 @@ RUN apt-get update
 RUN apt-get install -y python-virtualenv zlib1g-dev git-core wv expect gettext net-tools libprocps-dev patch libffi-dev libcurl4-openssl-dev
 
 RUN virtualenv .
-RUN bin/pip install grampg
+#RUN bin/pip install grampg
 RUN git clone https://github.com/xml-director/xmldirector.plonecore.git
 WORKDIR xmldirector.plonecore
 RUN git pull
