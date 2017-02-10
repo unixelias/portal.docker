@@ -26,7 +26,7 @@ RUN apt-get install -y python-virtualenv zlib1g-dev git-core wv expect gettext n
 
 # Para Pillow 2.7.0
 RUN buildDeps="curl sudo python-setuptools python-dev build-essential libldap2-dev libsasl2-dev libssl-dev libxml2-dev libxslt1-dev libbz2-dev libjpeg62-turbo-dev libyaml-dev libgeos-c1 libgeos-dev" \
- && apt-get install -y --no-install-recommends $buildDeps \
+ && apt-get install -y --no-install-recommends $buildDeps 
 RUN virtualenv .
 #RUN bin/pip install grampg
 RUN git clone https://github.com/xml-director/xmldirector.plonecore.git
