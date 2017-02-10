@@ -33,14 +33,15 @@ RUN git clone https://github.com/xml-director/xmldirector.plonecore.git
 WORKDIR xmldirector.plonecore
 RUN git pull
 RUN ../bin/python bootstrap.py --setuptools-version=7.0 --version=2.2.5 -c buildout-plone-4.3.cfg
-WORKDIR ..
-RUN sudo -u plone bin/buildout -c site.cfg -t 300 \
+WORKDIR /plone/instance/
+RUN sudo -u plone xmldirector.plonecore/bin/buildout -c site.cfg -t 300 \
  && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /plone/buildout-cache/downloads/* \
  && apt-get clean \
  && find /plone \( -type f -a -name '*.pyc' -o -name '*.pyo' \) -exec rm -rf '{}' +
 
+#RUN xmldirector.plonecore/bin/buildout -c -t 300
 USER plone
 
 EXPOSE 8080
