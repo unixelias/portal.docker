@@ -30,9 +30,10 @@ WORKDIR xmldirector.plonecore
 RUN git pull
 RUN ../bin/python bootstrap.py --setuptools-version=7.0 --version=2.2.5 -c buildout-plone-4.3.cfg
 
+
 # Para Pillow 2.7.0
 RUN buildDeps="curl sudo python-setuptools python-dev build-essential libldap2-dev libsasl2-dev libssl-dev libxml2-dev libxslt1-dev libbz2-dev libjpeg62-turbo-dev libyaml-dev libgeos-c1 libgeos-dev" \
- && apt-get update \
+ && cd .. \
  && apt-get install -y --no-install-recommends $buildDeps \
  && sudo -u plone bin/buildout -c site.cfg -t 300 \
  && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
