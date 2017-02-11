@@ -38,7 +38,7 @@ WORKDIR /plone/instance
 COPY base.cfg /plone/instance/
 COPY dev-base.cfg /plone/instance/
 COPY buildout-plone-4.3.cfg /plone/instance/
-RUN rsync -upErvh /plone/instance/xmldirector.plonecore /plone/instance/
+RUN rsync -apErvh /plone/instance/xmldirector.plonecore /plone/instance/
 RUN sudo -u plone bin/buildout -c base.cfg \
   && sudo -u plone bin/buildout -c site.cfg -Nv -t 300 \
   && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
