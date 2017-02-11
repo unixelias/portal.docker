@@ -37,7 +37,7 @@ RUN ../bin/python bootstrap.py --setuptools-version=7.0 --version=2.2.5 -c build
 
 WORKDIR /plone/instance
 RUN rsync -upErvh /plone/instance/xmldirector.plonecore /plone/instance/
-RUN sudo -u plone bin/buildout -Nv -t 300 \
+RUN sudo -u plone bin/buildout -c base.cfg -Nv -t 300 \
   && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /plone/buildout-cache/downloads/* \
