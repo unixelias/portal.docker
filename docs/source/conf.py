@@ -33,8 +33,7 @@
 extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.doctest',
     'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.githubpages']
+    'sphinx.ext.coverage',]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -58,7 +57,7 @@ author = u'Elias Alves <elias.alves@ufvjm.edu.br>'
 # built documents.
 #
 # The short X.Y version.
-version = u'1.0.a1'
+version = u'1.0a1'
 # The full version, including alpha/beta/rc tags.
 release = u'alfa'
 
@@ -177,5 +176,3 @@ epub_copyright = copyright
 
 # A list of files that should not be packed into the epub file.
 epub_exclude_files = ['search.html']
-
-
