@@ -22,9 +22,6 @@ RUN buildDeps="curl sudo python-setuptools python-dev build-essential libldap2-d
  && apt-get clean \
  && find /plone \( -type f -a -name '*.pyc' -o -name '*.pyo' \) -exec rm -rf '{}' +
 
-RUN crontab -l -u plone && 0 3 * * 0-6 /opt/plone/portal.buildout/bin/backup
-RUN crontab -l -u plone && 0 3 * * 7  /opt/plone/portal.buildout/bin/zeopack -p 8100 -d 1 && /opt/plone/portal.buildout/bin/backup
-
 USER plone
 
 EXPOSE 8080
