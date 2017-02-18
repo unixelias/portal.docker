@@ -24,32 +24,36 @@
     container_name: plone_data
     image: busybox
     volumes:
-    - '/data/filestorage'
-    - '/data/blobstorage'
+    - './data/srv/filestorage:/data/filestorage'
+    - './data/srv/blobstorage:/data/blobstorage'
     command: ['chown', '-R', '500:500', '/data']
 
   plone_data_backup:
     container_name: plone_data_backup
     image: busybox
     volumes:
-    - './data/backups:/data/backups'
-    - './data/blobstoragebackups:/data/blobstoragebackups'
+    - './bkp/srv/backups:/data/backups'
+    - './bkp/srv/blobstoragebackups:/data/blobstoragebackups'
+    - './bkp/srv/snapshotbackups:/data/snapshotbackups'
+    - './bkp/srv/blobstoragesnapshots:/data/blobstoragesnapshots'
     command: ['chown', '-R', '500:500', '/data']
 
   plone_data_zeo:
     container_name: plone_data_zeo
     image: busybox
     volumes:
-    - '/data/filestorage'
-    - '/data/blobstorage'
+    - './data/zeo/filestorage:/data/filestorage'
+    - './data/zeo/blobstorage:/data/blobstorage'
     command: ['chown', '-R', '500:500', '/data']
 
   plone_data_backup_zeo:
     container_name: plone_data_backup_zeo
     image: busybox
     volumes:
-    - './data/backups:/data/backups'
-    - './data/blobstoragebackups:/data/blobstoragebackups'
+    - './bkp/zeo/backups:/data/backups'
+    - './bkp/zeo/blobstoragebackups:/data/blobstoragebackups'
+    - './bkp/zeo/snapshotbackups:/data/snapshotbackups'
+    - './bkp/zeo/blobstoragesnapshots:/data/blobstoragesnapshots'
     command: ['chown', '-R', '500:500', '/data']
 
   zeoserver:
