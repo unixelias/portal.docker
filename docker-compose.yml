@@ -24,9 +24,9 @@ services:
   zeoserver:
     hostname: 'zeoserver'
     image: unixelias/plone.idg:latest
-    command: ['zeoserver']
+    command: zeoserver
     volumes:
-    - data:/data
+    - datazeo:/data
     environment:
     - ZEO_SHARED_BLOB_DIR=on
 
@@ -35,4 +35,9 @@ volumes:
     driver: local-persist
     driver_opts:
       mountpoint: ./data
+      command: chown -R 500:500 /data
+  datazeo:
+    driver: local-persist
+    driver_opts:
+      mountpoint: ./datazeo
       command: chown -R 500:500 /data
