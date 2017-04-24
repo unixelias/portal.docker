@@ -1,3 +1,5 @@
+version: "3"
+services:
   haproxy:
     image: eeacms/haproxy
     restart: 'always'
@@ -11,57 +13,31 @@
     - SERVICE_NAMES=plone
 
   ploneidg:
-    image: unixelias/plone.idg:1.1.5-dev
+    image: unixelias/plone.idg:latest
     links:
     - zeoserver
-    volumes_from:
-    - 'plone_data'
-    - 'plone_data_backup'
+    volumes:
+    - data:/data
     environment:
     - ZEO_ADDRESS=zeoserver:8100
 
-  plone_data:
-    container_name: plone_data
-    image: busybox
-    volumes:
-    - './data/srv/filestorage:/data/filestorage'
-    - './data/srv/blobstorage:/data/blobstorage'
-    command: ['chown', '-R', '500:500', '/data']
-
-  plone_data_backup:
-    container_name: plone_data_backup
-    image: busybox
-    volumes:
-    - './bkp/srv/backups:/data/backups'
-    - './bkp/srv/blobstoragebackups:/data/blobstoragebackups'
-    - './bkp/srv/snapshotbackups:/data/snapshotbackups'
-    - './bkp/srv/blobstoragesnapshots:/data/blobstoragesnapshots'
-    command: ['chown', '-R', '500:500', '/data']
-
-  plone_data_zeo:
-    container_name: plone_data_zeo
-    image: busybox
-    volumes:
-    - './data/zeo/filestorage:/data/filestorage'
-    - './data/zeo/blobstorage:/data/blobstorage'
-    command: ['chown', '-R', '500:500', '/data']
-
-  plone_data_backup_zeo:
-    container_name: plone_data_backup_zeo
-    image: busybox
-    volumes:
-    - './bkp/zeo/backups:/data/backups'
-    - './bkp/zeo/blobstoragebackups:/data/blobstoragebackups'
-    - './bkp/zeo/snapshotbackups:/data/snapshotbackups'
-    - './bkp/zeo/blobstoragesnapshots:/data/blobstoragesnapshots'
-    command: ['chown', '-R', '500:500', '/data']
-
   zeoserver:
     hostname: 'zeoserver'
-    image: unixelias/plone.idg:1.1.5-dev
-    command: ['zeoserver']
-    volumes_from:
-    - 'plone_data_zeo'
-    - 'plone_data_backup_zeo'
+    image: unixelias/plone.idg:latest
+    command: zeoserver
+    volumes:
+    - datazeo:/data
     environment:
     - ZEO_SHARED_BLOB_DIR=on
+
+volumes:
+  data:
+    driver: local-persist
+    driver_opts:
+      mountpoint: ./data
+      command: chown -R 500:500 /data
+  datazeo:
+    driver: local-persist
+    driver_opts:
+      mountpoint: ./datazeo
+      command: chown -R 500:500 /data
