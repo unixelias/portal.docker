@@ -1,50 +1,36 @@
-version: "2"
+version: "3"
 services:
-  zeoserver:
-    hostname: 'zeoserver'
-    image: unixelias/plone.idg:latest
-    command: zeoserver
-    volumes:
-      - datazeo:/data
-    environment:
-      - ZEO_SHARED_BLOB_DIR=on
-    expose:
-      - 8100
-
-  ploneidg:
-    image: unixelias/plone.idg:latest
-    links:
-      - zeoserver
-    volumes:
-      - data:/data
-    environment:
-      - ZEO_ADDRESS=zeoserver:8100
 
   haproxy:
     image: eeacms/haproxy
     restart: 'always'
     depends_on:
       - ploneidg
-      - zeoserver
     ports:
       - 8080:5000
       - 1936:1936
-    links:
-      - ploneidg
     environment:
       - BACKENDS=ploneidg
       - BACKENDS_PORT=8080
-      - SERVICE_NAMES=plone
-      - DNS_ENABLED=true
-      
+      - SERVICE_NAMES=ploneidg
+
+  ploneidg:
+    image: unixelias/plone.idg:latest
+    depends_on:
+      - zeoserver
+    environment:
+      - ZEO_ADDRESS=zeoserver:8100
+
+  zeoserver:
+    hostname: 'zeoserver'
+    image: unixelias/plone.idg:latest
+    command: zeoserver
+    volumes:
+      - data:/data
+
 volumes:
   data:
-    driver: local-persist
+    driver: local
     driver_opts:
-      mountpoint: ./data
-      command: chown -R 500:500 /data
-  datazeo:
-    driver: local-persist
-    driver_opts:
-      mountpoint: ./datazeo
+      mountpoint: /srv/portal/data
       command: chown -R 500:500 /data
