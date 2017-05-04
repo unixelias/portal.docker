@@ -10,10 +10,13 @@ services:
       replicas: 2
     ports:
       - 8080:8080
+    command: chown -R 500:500 /data
+    command: start
 
   zeoserver:
     hostname: 'zeoserver'
     image: unixelias/plone.idg:latest
+    command: chown -R 500:500 /data
     command: zeoserver
     volumes:
       - plone-data:/data
