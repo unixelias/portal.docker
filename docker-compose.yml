@@ -13,6 +13,7 @@ services:
       - BACKENDS_PORT=8080
       - SERVICE_NAMES=ploneidg
       - DNS_ENABLED=true
+      - STATS_AUTH=admin:admin
 
   zeoserver:
     hostname: 'zeoserver'
@@ -30,7 +31,7 @@ services:
     depends_on:
       - zeoserver
     environment:
-    - ZEO_ADDRESS=zeoserver:8100
+      - ZEO_ADDRESS=zeoserver:8100
 
 volumes:
   data:
