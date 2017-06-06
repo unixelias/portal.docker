@@ -7,7 +7,6 @@ LABEL Name="Modelo Plone v4.3 IDG escrito para implementação no Portal da UFVJ
 
 USER plone
 COPY site.cfg /plone/instance/
-COPY sources.cfg /plone/instance/
 
 USER root
 COPY Dockerfile /root/buildinfo
