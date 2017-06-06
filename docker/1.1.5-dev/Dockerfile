@@ -13,7 +13,7 @@ COPY Dockerfile /root/buildinfo
 
 # Para Pillow 2.7.0
 RUN buildDeps="curl sudo python-setuptools python-dev python-ldap build-essential libldap2-dev libsasl2-dev libssl-dev libxml2-dev libxslt1-dev libbz2-dev libjpeg62-turbo-dev libyaml-dev libgeos-c1 libgeos-dev" \
- && runDeps="systemd-cron" \
+ && runDeps="cron" \
  && apt-get update \
  && apt-get install -y --no-install-recommends $buildDeps \
  && apt-get install -y $runDeps \
