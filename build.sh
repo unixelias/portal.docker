@@ -7,3 +7,4 @@ for i in $( ls docker); do
        * ) docker build -t unixelias/plone.idg:$i docker/$i ;;
   esac
 done
+
