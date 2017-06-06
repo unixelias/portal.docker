@@ -16,9 +16,9 @@ RUN buildDeps="curl sudo python-setuptools python-dev python-ldap build-essentia
  && runDeps="systemd-cron" \
  && apt-get update \
  && apt-get install -y --no-install-recommends $buildDeps \
+ && apt-get install -y $runDeps \
  && sudo -u plone bin/buildout -c site.cfg -t 300 \
  && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
- && apt-get install -y $runDeps \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /plone/buildout-cache/downloads/* \
  && apt-get clean \
