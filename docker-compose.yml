@@ -4,14 +4,14 @@ services:
     image: eeacms/haproxy
     restart: 'always'
     depends_on:
-      - portal
+      - ploneidg
     ports:
-      - 8090:5000
+      - 8080:5000
       - 1936:1936
     environment:
-      - BACKENDS=portal
+      - BACKENDS=ploneidg
       - BACKENDS_PORT=8080
-      - SERVICE_NAMES=portal
+      - SERVICE_NAMES=ploneidg
       - DNS_ENABLED=true
 
   zeoserver:
@@ -20,9 +20,12 @@ services:
     command:
       - zeoserver
     volumes:
-      - data:/data
+    - data:/data/filestorage
+    - data:/data/blobstorage
+    - data:/data/backups
+    - data:/data/blobstoragebackups
 
-  portal:
+  ploneidg:
     image: unixelias/plone.idg:latest
     depends_on:
       - zeoserver
