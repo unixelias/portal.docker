@@ -8,4 +8,4 @@ shopt -s extglob
 #  esac
 #done
 
-docker build -t unixelias/plone.idg:1.1.5-dev docker/1.1.5-dev
+docker build -t unixelias/plone.idg:1.1.5-dev docker/1.1.5-dev && docker push unixelias/plone.idg:1.1.5-dev
