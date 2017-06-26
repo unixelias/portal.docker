@@ -1,7 +1,7 @@
 FROM plone:4.3
 MAINTAINER Elias Alves <elias.alves@ufvjm.edu.br>
 LABEL Name="Modelo Plone v4.3 IDG escrito para implementação no Portal da UFVJM" \
-      Version="1.1.5.2" \
+      Version="1.1.5.3" \
       Architecture="x86_64" \
       Dockerfile_location="/root/buildinfo"
 
