@@ -45,8 +45,6 @@ RUN buildDeps=" \
  && apt-get clean \
  && find /plone \( -type f -a -name '*.pyc' -o -name '*.pyo' \) -exec rm -rf '{}' +
 
-RUN systemctl enable varnish
-
 USER plone
 
 EXPOSE 8080
