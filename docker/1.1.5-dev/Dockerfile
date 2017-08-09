@@ -10,7 +10,7 @@ COPY site.cfg /plone/instance/
 
 USER root
 COPY Dockerfile /root/buildinfo
-COPY docker-entrypoint.sh /
+
 # Para Pillow 2.7.0
 RUN buildDeps=" \
           build-essential \
@@ -28,22 +28,10 @@ RUN buildDeps=" \
           python-dev python-ldap \
           python-setuptools \
           sudo \
-          \
-          automake \
-          autotools-dev \
-          libedit-dev \
-          libjemalloc-dev \
-          libncurses5-dev \
-          libpcre3-dev \
-          libtool \
-          pkg-config \
-          python-docutils \
-          python-sphinx \
           " \
  && runDeps=" \
           apt-transport-https \
           cron \
-          varnish \
           " \
  && apt-get update \
  ## Instala as dependências para tempo de compilação
@@ -62,8 +50,6 @@ RUN systemctl enable varnish
 USER plone
 
 EXPOSE 8080
-EXPOSE 6081
-EXPOSE 8000
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["start"]
