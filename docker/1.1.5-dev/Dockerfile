@@ -10,7 +10,7 @@ COPY site.cfg /plone/instance/
 
 USER root
 COPY Dockerfile /root/buildinfo
-
+COPY docker-entrypoint.sh /
 # Para Pillow 2.7.0
 RUN buildDeps=" \
           build-essential \
@@ -57,6 +57,8 @@ RUN buildDeps=" \
  && apt-get clean \
  && find /plone \( -type f -a -name '*.pyc' -o -name '*.pyo' \) -exec rm -rf '{}' +
 
+RUN systemctl enable varnish
+
 USER plone
 
 EXPOSE 8080
@@ -64,4 +66,4 @@ EXPOSE 6081
 EXPOSE 8000
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["service varnish start && start"]
+CMD ["start"]
