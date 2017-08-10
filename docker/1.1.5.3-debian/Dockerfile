@@ -2,8 +2,6 @@ FROM plone:4.3
 
 MAINTAINER Elias Alves <elias.alves@ufvjm.edu.br>
 
-LABEL Name="Modelo Plone v4.3 IDG escrito para implementação no Portal da UFVJM" \
-
 ARG BUILD_DATE
 ARG VCS_REF
 
