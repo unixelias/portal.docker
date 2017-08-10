@@ -1,21 +1,19 @@
 version: "2"
 services:
-  varnish:
-    image: eeacms/varnish
+  haproxy:
+    image: eeacms/haproxy
     restart: 'always'
+    depends_on:
+      - ploneidg
     ports:
-      - 8080:6081/tcp
+      - 8080:5000
+      - 1936:1936
     environment:
-      BACKENDS: ploneidg
-      BACKENDS_PORT: '8080'
-      BACKENDS_PROBE_INTERVAL: 3s
-      BACKENDS_PROBE_THRESHOLD: '2'
-      BACKENDS_PROBE_TIMEOUT: 1s
-      BACKENDS_PROBE_WINDOW: '3'
-      DNS_ENABLED: 'true'
-    hostname: varnish
-    links:
-    - ploneidg:ploneidg
+      - BACKENDS=ploneidg
+      - BACKENDS_PORT=8080
+      - SERVICE_NAMES=ploneidg
+      - DNS_ENABLED=true
+      - STATS_AUTH=admin:admin
 
   zeoserver:
     hostname: 'zeoserver'
