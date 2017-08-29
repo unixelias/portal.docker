@@ -16,9 +16,9 @@ LABEL Name="Plone v4.3 IDG" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/unixelias/plone.idg" \
       org.label-schema.vendor="Elias Alves at UFVJM" \
-      org.label-schema.version="1.1.5.3" \
-      org.label-schema.version="1.1.5.2" \
+      org.label-schema.version="1.1.5" \
       org.label-schema.version="dev" \
+      org.label-schema.version="unstable" \
       org.label-schema.schema-version="1.0" \
       org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg"
 
@@ -46,16 +46,14 @@ RUN buildDeps=" \
           python-setuptools \
           sudo \
           " \
- && runDeps=" \
-          cron \
-          " \
+ && runDeps="cron" \
  && apt-get update \
  ## Instala as dependências para tempo de compilação
  && apt-get install -y --no-install-recommends $buildDeps \
  ## Instala as dependências para tempo de execução
- && apt-get update && apt-get install -y $runDeps \
+ && apt-get install -y $runDeps \
+ && easy_install python-openid \
  && sudo -u plone bin/buildout -c site.cfg -t 300 \
- ##&& sed -i "s#db.url=jdbc:postgresql://localhost:5432/dspace57#db.url=jdbc:postgresql://localhost:5432/dspace#" ./build.properties \
  && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /plone/buildout-cache/downloads/* \
