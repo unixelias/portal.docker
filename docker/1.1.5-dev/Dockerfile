@@ -47,7 +47,6 @@ RUN buildDeps=" \
           sudo \
           " \
  && runDeps=" \
-          apt-transport-https \
           cron \
           " \
  && apt-get update \
