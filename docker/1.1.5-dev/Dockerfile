@@ -55,6 +55,7 @@ RUN buildDeps=" \
  ## Instala as dependências para tempo de execução
  && apt-get update && apt-get install -y $runDeps \
  && sudo -u plone bin/buildout -c site.cfg -t 300 \
+ ##&& sed -i "s#db.url=jdbc:postgresql://localhost:5432/dspace57#db.url=jdbc:postgresql://localhost:5432/dspace#" ./build.properties \
  && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /plone/buildout-cache/downloads/* \
