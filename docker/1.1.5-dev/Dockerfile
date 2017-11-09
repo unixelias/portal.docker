@@ -37,14 +37,21 @@ RUN buildDeps=" \
           libjpeg62-turbo-dev \
           libgeos-c1 \
           libgeos-dev \
+          libopenjp2-7-dev \
+          libreadline-gplv2-dev \
           libsasl2-dev \
           libssl-dev \
+          libtiff5-dev \
           libyaml-dev \
           libxml2-dev \
           libxslt1-dev \
-          python-dev python-ldap \
+          python-dev \
+          python-imaging \
+          python-ldap \
+          python-pip \
           python-setuptools \
           sudo \
+          zlib1g-dev \
           " \
  && runDeps="cron" \
  && apt-get update \
