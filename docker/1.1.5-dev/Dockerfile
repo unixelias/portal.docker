@@ -1,4 +1,4 @@
-FROM plone:4.3
+FROM plone:4.3.15
 
 MAINTAINER Elias Alves <elias.alves@ufvjm.edu.br>
 
