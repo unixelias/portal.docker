@@ -52,6 +52,8 @@ RUN buildDeps=" \
           python-setuptools \
           sudo \
           zlib1g-dev \
+          poppler-utils \
+          git \
           " \
  && runDeps="cron" \
  && apt-get update \
