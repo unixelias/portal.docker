@@ -6,7 +6,7 @@ ARG BUILD_DATE
 ARG VCS_REF
 
 LABEL Name="Plone v4.3 IDG" \
-      Version="1.1.5.3" \
+      Version="1.4" \
       Architecture="x86_64" \
       Dockerfile_location="/root/buildinfo" \
       org.label-schema.build-date=$BUILD_DATE \
@@ -16,8 +16,7 @@ LABEL Name="Plone v4.3 IDG" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/unixelias/plone.idg" \
       org.label-schema.vendor="Elias Alves at UFVJM" \
-      org.label-schema.version="1.1.5.3" \
-      org.label-schema.version="1.1.5.2" \
+      org.label-schema.version="1.4" \
       org.label-schema.version="dev" \
       org.label-schema.schema-version="1.0" \
       org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg"
