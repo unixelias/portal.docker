@@ -52,7 +52,6 @@ RUN buildDeps=" \
  && apt-get install -y --no-install-recommends $buildDeps \
  ## Instala as dependências para tempo de execução
  && apt-get install -y $runDeps \
- && pip install geopy \
  && sudo -u plone bin/buildout -c site.cfg -t 300 \
  && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
  && rm -rf /var/lib/apt/lists/* \
