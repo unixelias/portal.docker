@@ -18,6 +18,7 @@ LABEL Name="Plone v4.3 IDG" \
       org.label-schema.vendor="Elias Alves at UFVJM" \
       org.label-schema.version="1.4" \
       org.label-schema.version="dev" \
+      org.label-schema.version="unstable" \
       org.label-schema.schema-version="1.0" \
       org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg"
 
@@ -45,15 +46,13 @@ RUN buildDeps=" \
           python-setuptools \
           sudo \
           " \
- && runDeps=" \
-          apt-transport-https \
-          cron \
-          " \
+ && runDeps="cron" \
  && apt-get update \
  ## Instala as dependências para tempo de compilação
  && apt-get install -y --no-install-recommends $buildDeps \
  ## Instala as dependências para tempo de execução
- && apt-get update && apt-get install -y $runDeps \
+ && apt-get install -y $runDeps \
+ && pip install geopy \
  && sudo -u plone bin/buildout -c site.cfg -t 300 \
  && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
  && rm -rf /var/lib/apt/lists/* \
