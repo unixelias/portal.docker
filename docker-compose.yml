@@ -1,12 +1,28 @@
 version: "2"
 services:
+  varnish:
+    hostname: 'varnish'
+    image: eeacms/varnish
+    restart: 'always'
+    depends_on:
+      - haproxy
+    ports:
+      - 8080:6081/tcp
+    environment:
+      - BACKENDS=haproxy
+      - BACKENDS_PORT=5000
+      - BACKENDS_PROBE_INTERVAL=3s
+      - BACKENDS_PROBE_THRESHOLD=2
+      - BACKENDS_PROBE_TIMEOUT=1s
+      - BACKENDS_PROBE_WINDOW=3
+      - DNS_ENABLED=true
+
   haproxy:
     image: eeacms/haproxy
     restart: 'always'
     depends_on:
       - ploneidg
     ports:
-      - 8080:5000
       - 1936:1936
     environment:
       - BACKENDS=ploneidg
