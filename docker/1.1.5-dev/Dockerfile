@@ -50,6 +50,7 @@ RUN buildDeps=" \
           python-ldap \
           python-pip \
           python-setuptools \
+          python-virtualenv \
           sudo \
           zlib1g-dev \
           poppler-utils \
