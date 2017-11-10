@@ -11,6 +11,8 @@ for i in $( ls docker); do
  esac
 done
 
+docker tag unixelias/plone.idg:1.4 unixelias/plone.idg:latest && docker push unixelias/plone.idg:latest
+
 # docker build -t unixelias/plone.idg:1.1.5-dev \
 #         --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 #         --build-arg VCS_REF=`git rev-parse --short HEAD` docker/1.1.5-dev \
