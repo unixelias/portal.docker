@@ -1,17 +1,20 @@
  #!/bin/bash
 shopt -s extglob
 
+last=""
+
 for i in $( ls docker); do
  case "$i" in
-      *-test )  ;;
+      *-test|dev )  ;;
       * ) docker build -t unixelias/plone.idg:$i \
                    --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
                    --build-arg VCS_REF=`git rev-parse --short HEAD` docker/$i \
-                   && docker push unixelias/plone.idg:$i ;;
+                   && docker push unixelias/plone.idg:$i \
+                   && last=$i ;;
  esac
 done
 
-docker tag unixelias/plone.idg:1.4 unixelias/plone.idg:latest && docker push unixelias/plone.idg:latest
+docker tag unixelias/plone.idg:$last unixelias/plone.idg:latest && docker push unixelias/plone.idg:latest
 
 # docker build -t unixelias/plone.idg:1.1.5-dev \
 #         --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
