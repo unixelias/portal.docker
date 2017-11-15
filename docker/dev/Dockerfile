@@ -5,18 +5,18 @@ MAINTAINER Elias Alves <elias.alves@ufvjm.edu.br>
 ARG BUILD_DATE
 ARG VCS_REF
 
-LABEL Name="Plone v4.3 IDG" \
-      Version="1.4" \
+LABEL Name="Plone v4.3.15 IDG" \
+      Version="1.5rc" \
       Architecture="x86_64" \
       Dockerfile_location="/root/buildinfo" \
       org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="Plone v4.3 IDG" \
-      org.label-schema.description="Modelo Plone v4.3 IDG escrito para implementação no Portal da UFVJM" \
+      org.label-schema.description="Modelo Plone v4.3.15 IDG escrito para implementação no Portal da UFVJM" \
       org.label-schema.url="http://portal.ufvjm.edu.br/" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/unixelias/plone.idg" \
       org.label-schema.vendor="Elias Alves at UFVJM" \
-      org.label-schema.version="1.4" \
+      org.label-schema.version="1.5rc" \
       org.label-schema.version="dev" \
       org.label-schema.version="unstable" \
       org.label-schema.schema-version="1.0" \
