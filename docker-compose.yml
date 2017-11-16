@@ -33,7 +33,7 @@ services:
 
   zeoserver:
     hostname: 'zeoserver'
-    image: unixelias/plone.idg:latest
+    image: unixelias/plone.idg:dev
     command:
       - zeoserver
     volumes:
@@ -43,7 +43,7 @@ services:
     - data-blobstoragebackups:/data/blobstoragebackups
 
   ploneidg:
-    image: unixelias/plone.idg:latest
+    image: unixelias/plone.idg:dev
     depends_on:
       - zeoserver
     environment:
@@ -54,19 +54,19 @@ volumes:
     driver: local-persist
     driver_opts:
       mountpoint: /srv/portal/data/filestorage
-      command: chown -R 500:500 /data/filestorage
+      command: chown -R 500:500 /data
   data-blobstorage:
     driver: local-persist
     driver_opts:
       mountpoint: /srv/portal/data/blobstorage
-      command: chown -R 500:500 /data/blobstorage
+      command: chown -R 500:500 /data
   data-backups:
     driver: local-persist
     driver_opts:
       mountpoint: /srv/portal/data/backups
-      command: chown -R 500:500 /data/backups
+      command: chown -R 500:500 /data
   data-blobstoragebackups:
     driver: local-persist
     driver_opts:
       mountpoint: /srv/portal/data/blobstoragebackups
-      command: chown -R 500:500 /data/blobstoragebackups
+      command: chown -R 500:500 /data
