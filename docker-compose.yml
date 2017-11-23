@@ -1,28 +1,49 @@
-version: "3"
+version: "2"
 services:
-  ploneidg:
-    image: unixelias/plone.idg:latest
+  varnish:
+    hostname: 'varnish'
+    image: eeacms/varnish
+    restart: 'always'
     depends_on:
-      - zeoserver
-    environment:
-      - ZEO_ADDRESS=zeoserver:8100
-    deploy:
-      replicas: 2
+      - haproxy
     ports:
-      - 8080:8080
-    command: chown -R 500:500 /data
-    command: start
+      - 8080:6081/tcp
+    environment:
+      - BACKENDS=haproxy
+      - BACKENDS_PORT=5000
+      - BACKENDS_PROBE_INTERVAL=3s
+      - BACKENDS_PROBE_THRESHOLD=2
+      - BACKENDS_PROBE_TIMEOUT=1s
+      - BACKENDS_PROBE_WINDOW=3
+      - DNS_ENABLED=true
+
+  haproxy:
+    image: eeacms/haproxy
+    restart: 'always'
+    depends_on:
+      - ploneidg
+    ports:
+      - 1936:1936
+    environment:
+      - BACKENDS=ploneidg
+      - BACKENDS_PORT=8080
+      - SERVICE_NAMES=ploneidg
+      - DNS_ENABLED=true
+      - STATS_AUTH=admin:admin
 
   zeoserver:
     hostname: 'zeoserver'
-    image: unixelias/plone.idg:latest
+    image: unixelias/plone.idg:1.1.5-dev
     command:
       - zeoserver
     volumes:
-      - plone-data:/data
+    - data-filestorage:/data/filestorage
+    - data-blobstorage:/data/blobstorage
+    - data-backups:/data/backups
+    - data-blobstoragebackups:/data/blobstoragebackups
 
   ploneidg:
-    image: unixelias/plone.idg:latest
+    image: unixelias/plone.idg:1.1.5-dev
     depends_on:
       - zeoserver
     environment:
