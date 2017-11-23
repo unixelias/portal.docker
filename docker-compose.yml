@@ -16,11 +16,23 @@ services:
   zeoserver:
     hostname: 'zeoserver'
     image: unixelias/plone.idg:latest
-    command: chown -R 500:500 /data
-    command: zeoserver
+    command:
+      - zeoserver
     volumes:
       - plone-data:/data
 
+  ploneidg:
+    image: unixelias/plone.idg:latest
+    depends_on:
+      - zeoserver
+    environment:
+      - ZEO_ADDRESS=zeoserver:8100
 volumes:
-  plone-data:
+  data-filestorage:
+    external: true
+  data-blobstorage:
+    external: true
+  data-backups:
+    external: true
+  data-blobstoragebackups:
     external: true
