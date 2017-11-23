@@ -48,15 +48,15 @@ RUN buildDeps=" \
           python-dev \
           python-imaging \
           python-ldap \
-          python-pip \
-          python-setuptools \
-          python-virtualenv \
-          sudo \
           zlib1g-dev \
           poppler-utils \
           git \
           " \
- && runDeps="cron" \
+ && runDeps="cron \
+          graphviz \
+          nano \
+          sudo \
+          " \
  && apt-get update \
  ## Instala as dependências para tempo de compilação
  && apt-get install -y --no-install-recommends $buildDeps \
