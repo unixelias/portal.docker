@@ -33,7 +33,7 @@ services:
 
   zeoserver:
     hostname: 'zeoserver'
-    image: unixelias/plone.idg:dev
+    image: unixelias/plone.idg:latest
     command:
       - zeoserver
     volumes:
@@ -43,7 +43,7 @@ services:
     - data-blobstoragebackups:/data/blobstoragebackups
 
   ploneidg:
-    image: unixelias/plone.idg:dev
+    image: unixelias/plone.idg:latest
     depends_on:
       - zeoserver
     environment:

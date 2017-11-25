@@ -5,20 +5,20 @@ MAINTAINER Elias Alves <elias.alves@ufvjm.edu.br>
 ARG BUILD_DATE
 ARG VCS_REF
 
-LABEL Name="Plone v4.3 IDG" \
+LABEL Name="Plone v4.3.15 IDG" \
       Version="1.5" \
       Architecture="x86_64" \
       Dockerfile_location="/root/buildinfo" \
       org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="Plone v4.3 IDG" \
-      org.label-schema.description="Modelo Plone v4.3 IDG escrito para implementação no Portal da UFVJM" \
+      org.label-schema.name="Plone v4.3.15 IDG" \
+      org.label-schema.description="Modelo Plone v4.3.15 IDG escrito para implementação no Portal da UFVJM" \
       org.label-schema.url="http://portal.ufvjm.edu.br/" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/unixelias/plone.idg" \
       org.label-schema.vendor="Elias Alves at UFVJM" \
       org.label-schema.version="1.5" \
-      org.label-schema.version="dev" \
-      org.label-schema.version="unstable" \
+      org.label-schema.version="latest" \
+      org.label-schema.version="stable" \
       org.label-schema.schema-version="1.0" \
       org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg"
 
@@ -48,15 +48,14 @@ RUN buildDeps=" \
           python-dev \
           python-imaging \
           python-ldap \
+          python-pip \
+          python-setuptools \
+          sudo \
           zlib1g-dev \
           poppler-utils \
           git \
           " \
- && runDeps="cron \
-          graphviz \
-          nano \
-          sudo \
-          " \
+ && runDeps="cron" \
  && apt-get update \
  ## Instala as dependências para tempo de compilação
  && apt-get install -y --no-install-recommends $buildDeps \
