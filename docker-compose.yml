@@ -33,25 +33,22 @@ services:
 
   zeoserver:
     hostname: 'zeoserver'
-    image: unixelias/plone.idg:latest
+    image: unixelias/plone.idg:1.1.5.3
     command:
       - zeoserver
     volumes:
-    - data-filestorage:/data/filestorage
-    - data-blobstorage:/data/blobstorage
+    - data:/data
     - data-backups:/data/backups
     - data-blobstoragebackups:/data/blobstoragebackups
 
   ploneidg:
-    image: unixelias/plone.idg:latest
+    image: unixelias/plone.idg:1.1.5.3
     depends_on:
       - zeoserver
     environment:
       - ZEO_ADDRESS=zeoserver:8100
 volumes:
-  data-filestorage:
-    external: true
-  data-blobstorage:
+  data:
     external: true
   data-backups:
     external: true
