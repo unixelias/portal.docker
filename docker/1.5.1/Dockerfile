@@ -1,17 +1,17 @@
-FROM plone:4.3.15
+FROM plone:4.3
 
 MAINTAINER Elias Alves <elias.alves@ufvjm.edu.br>
 
 ARG BUILD_DATE
 ARG VCS_REF
 
-LABEL Name="Plone v4.3.15 IDG" \
+LABEL Name="PloneGovBR" \
       Version="1.5.1" \
       Architecture="x86_64" \
       Dockerfile_location="/root/buildinfo" \
       org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="Plone v4.3.15 IDG" \
-      org.label-schema.description="Modelo Plone v4.3.15 IDG escrito para implementação no Portal da UFVJM" \
+      org.label-schema.name="PloneGovBR" \
+      org.label-schema.description="Modelo PloneGovBR escrito para implementação no Portal da UFVJM" \
       org.label-schema.url="http://portal.ufvjm.edu.br/" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/unixelias/plone.idg" \
@@ -20,7 +20,7 @@ LABEL Name="Plone v4.3.15 IDG" \
       org.label-schema.version="latest" \
       org.label-schema.version="dev" \
       org.label-schema.schema-version="1.0" \
-      org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg"
+      org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg:1.5.1"
 
 USER plone
 COPY site.cfg /plone/instance/
@@ -28,34 +28,35 @@ COPY site.cfg /plone/instance/
 USER root
 COPY Dockerfile /root/buildinfo
 
-# Para Pillow 2.7.0
+# Para Pillow
 RUN buildDeps=" \
           build-essential \
+          git \
           curl \
           libbz2-dev \
-          libldap2-dev \
           libjpeg62-turbo-dev \
-          libgeos-c1 \
-          libgeos-dev \
-          libopenjp2-7-dev \
           libreadline-gplv2-dev \
-          libsasl2-dev \
           libssl-dev \
-          libtiff5-dev \
-          libyaml-dev \
           libxml2-dev \
           libxslt1-dev \
           python-dev \
+          poppler-utils \
+          python-virtualenv \
+          wv \
+          zlib1g-dev \
+          " \
+ && runDeps=" \
+          cron \
+          libgeos-c1 \
+          libgeos-dev \
+          libldap2-dev \
+          libsasl2-dev \
+          nano \
           python-imaging \
-          python-ldap \
           python-pip \
           python-setuptools \
           sudo \
-          zlib1g-dev \
-          poppler-utils \
-          git \
           " \
- && runDeps="cron" \
  && apt-get update \
  ## Instala as dependências para tempo de compilação
  && apt-get install -y --no-install-recommends $buildDeps \
