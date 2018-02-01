@@ -33,14 +33,14 @@ services:
 
   zeoserver:
     hostname: 'zeoserver'
-    image: unixelias/plone.idg
+    image: unixelias/plone.idg:dev
     command:
       - zeoserver
     volumes:
     - data:/data
 
   ploneidg:
-    image: unixelias/plone.idg
+    image: unixelias/plone.idg:dev
     depends_on:
       - zeoserver
     environment:
