@@ -4,7 +4,13 @@
 
 [![](https://images.microbadger.com/badges/version/unixelias/plone.idg.svg)](https://microbadger.com/images/unixelias/plone.idg "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/unixelias/plone.idg.svg)](https://microbadger.com/images/unixelias/plone.idg "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/unixelias/plone.idg.svg)](https://microbadger.com/images/unixelias/plone.idg "Get your own commit badge on microbadger.com")
 
+[![](https://images.microbadger.com/badges/version/unixelias/plone.idg:1.5.1.svg)](https://microbadger.com/images/unixelias/plone.idg:1.5.1 "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/unixelias/plone.idg:1.5.1.svg)](https://microbadger.com/images/unixelias/plone.idg:1.5.1 "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/unixelias/plone.idg:1.5.1.svg)](https://microbadger.com/images/unixelias/plone.idg:1.5.1 "Get your own commit badge on microbadger.com")
+
+[![](https://images.microbadger.com/badges/version/unixelias/plone.idg:1.5.svg)](https://microbadger.com/images/unixelias/plone.idg:1.5 "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/unixelias/plone.idg:1.5.svg)](https://microbadger.com/images/unixelias/plone.idg:1.5 "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/unixelias/plone.idg:1.5.svg)](https://microbadger.com/images/unixelias/plone.idg:1.5 "Get your own commit badge on microbadger.com")
+
 [![](https://images.microbadger.com/badges/version/unixelias/plone.idg:1.4.svg)](https://microbadger.com/images/unixelias/plone.idg:1.4 "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/unixelias/plone.idg:1.4.svg)](https://microbadger.com/images/unixelias/plone.idg:1.4 "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/unixelias/plone.idg:1.4.svg)](https://microbadger.com/images/unixelias/plone.idg:1.4 "Get your own commit badge on microbadger.com")
+
+[![](https://images.microbadger.com/badges/version/unixelias/plone.idg:1.3.svg)](https://microbadger.com/images/unixelias/plone.idg:1.3 "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/unixelias/plone.idg:1.3.svg)](https://microbadger.com/images/unixelias/plone.idg:1.3 "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/unixelias/plone.idg:1.3.svg)](https://microbadger.com/images/unixelias/plone.idg:1.3 "Get your own commit badge on microbadger.com")
 
 [![](https://images.microbadger.com/badges/version/unixelias/plone.idg:1.2.svg)](https://microbadger.com/images/unixelias/plone.idg:1.2 "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/unixelias/plone.idg:1.2.svg)](https://microbadger.com/images/unixelias/plone.idg:1.2 "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/unixelias/plone.idg:1.2.svg)](https://microbadger.com/images/unixelias/plone.idg:1.2 "Get your own commit badge on microbadger.com")
 
@@ -13,7 +19,7 @@
 [![](https://images.microbadger.com/badges/version/unixelias/plone.idg:dev.svg)](https://microbadger.com/images/unixelias/plone.idg:dev "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/unixelias/plone.idg:dev.svg)](https://microbadger.com/images/unixelias/plone.idg:dev "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/unixelias/plone.idg:dev.svg)](https://microbadger.com/images/unixelias/plone.idg:dev "Get your own commit badge on microbadger.com")
 
 ## Build Status
-[![Build Status](https://travis-ci.org/unixelias/plone.idg.svg?branch=master)](https://travis-ci.org/unixelias/plone.idg)
+[![Build Status](https://travis-ci.org/unixelias/plone.idg.svg?branch=latest)](https://travis-ci.org/unixelias/plone.idg)
 
 
 ## Instalando dependências
