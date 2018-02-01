@@ -18,9 +18,9 @@ LABEL Name="PloneGovBR" \
       org.label-schema.vendor="Elias Alves at UFVJM" \
       org.label-schema.version="1.5.1" \
       org.label-schema.version="latest" \
-      org.label-schema.version="dev" \
+      org.label-schema.version="stable" \
       org.label-schema.schema-version="1.0" \
-      org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg:1.5.1"
+      org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg:latest"
 
 USER plone
 COPY site.cfg /plone/instance/
