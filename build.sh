@@ -1,19 +1,10 @@
  #!/bin/bash
 shopt -s extglob
 
-last=""
+branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 
-for i in $( ls docker); do
- case "$i" in
-      dev ) docker build -t unixelias/plone.idg:$i \
+docker build -t unixelias/plone.idg:$branch \
                    --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
-                   --build-arg VCS_REF=`git rev-parse --short HEAD` docker/$i \
-                   && docker push unixelias/plone.idg:$i \
-                   && last=$i ;;
- esac
-done
+                   --build-arg VCS_REF=`git rev-parse --short HEAD` docker/$branch
 
-# docker build -t unixelias/plone.idg:1.1.5-dev \
-#         --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
-#         --build-arg VCS_REF=`git rev-parse --short HEAD` docker/1.1.5-dev \
-#         && docker push unixelias/plone.idg:1.1.5-dev
+docker push unixelias/plone.idg:$branch
