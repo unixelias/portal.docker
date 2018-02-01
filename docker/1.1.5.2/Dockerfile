@@ -1,9 +1,22 @@
 FROM plone:4.3
 MAINTAINER Elias Alves <elias.alves@ufvjm.edu.br>
-LABEL Name="Modelo Plone v4.3 IDG escrito para implementação no Portal da UFVJM" \
+LABEL Name="Plone v4.3 IDG" \
       Version="1.1.5.2" \
       Architecture="x86_64" \
-      Dockerfile_location="/root/buildinfo"
+      Dockerfile_location="/root/buildinfo" \
+      org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.name="Plone v4.3 IDG" \
+      org.label-schema.description="Modelo Plone v4.3 IDG escrito para implementação no Portal da UFVJM" \
+      org.label-schema.url="http://portal.ufvjm.edu.br/" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/unixelias/plone.idg" \
+      org.label-schema.vendor="Elias Alves at UFVJM" \
+      org.label-schema.version="1.1.5" \
+      org.label-schema.version="1.1.5.2" \
+      org.label-schema.version="stable" \
+      org.label-schema.version="latest" \
+      org.label-schema.schema-version="1.0" \
+      org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg:1.1.5.2"
 
 USER plone
 COPY site.cfg /plone/instance/
@@ -12,8 +25,34 @@ USER root
 COPY Dockerfile /root/buildinfo
 
 # Para Pillow 2.7.0
-RUN buildDeps="curl sudo python-setuptools python-dev python-ldap build-essential libldap2-dev libsasl2-dev libssl-dev libxml2-dev libxslt1-dev libbz2-dev libjpeg62-turbo-dev libyaml-dev libgeos-c1 libgeos-dev" \
- && runDeps="cron" \
+RUN buildDeps=" \
+          build-essential \
+          git \
+          curl \
+          libbz2-dev \
+          libjpeg62-turbo-dev \
+          libreadline-gplv2-dev \
+          libssl-dev \
+          libxml2-dev \
+          libxslt1-dev \
+          python-dev \
+          poppler-utils \
+          python-virtualenv \
+          wv \
+          zlib1g-dev \
+          " \
+ && runDeps=" \
+          cron \
+          libgeos-c1 \
+          libgeos-dev \
+          libldap2-dev \
+          libsasl2-dev \
+          nano \
+          python-imaging \
+          python-pip \
+          python-setuptools \
+          sudo \
+          " \
  && apt-get update \
  && apt-get install -y --no-install-recommends $buildDeps \
  && apt-get install -y $runDeps \
