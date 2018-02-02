@@ -25,10 +25,10 @@ LABEL Name="PloneGovBR" \
 
 USER plone
 COPY site.cfg /plone/instance/
+COPY production.cfg /plone/instance/
 
 USER root
 COPY Dockerfile /root/buildinfo
-COPY haproxy.conf.in /plone/instance/etc/templates/haproxy.conf.in
 
 # Para Pillow
 RUN buildDeps=" \

@@ -37,7 +37,9 @@ services:
     command:
       - zeoserver
     volumes:
-    - data:/data
+      - data:/data
+    environment:
+      - ZEO_SHARED_BLOB_DIR=on
 
   ploneidg:
     image: unixelias/plone.idg:dev
