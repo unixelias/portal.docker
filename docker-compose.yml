@@ -33,7 +33,7 @@ services:
 
   zeoserver:
     hostname: 'zeoserver'
-    image: unixelias/plone.idg:dev
+    image: unixelias/plone.idg
     command:
       - zeoserver
     volumes:
@@ -42,7 +42,7 @@ services:
       - ZEO_SHARED_BLOB_DIR=on
 
   ploneidg:
-    image: unixelias/plone.idg:dev
+    image: unixelias/plone.idg
     depends_on:
       - zeoserver
     environment:

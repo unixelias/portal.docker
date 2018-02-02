@@ -60,7 +60,6 @@ RUN buildDeps=" \
           sudo \
           " \
  && apt-get update \
- && chown -R 500:500 /plone/instance/etc \
  ## Instala as dependências para tempo de compilação
  && apt-get install -y --no-install-recommends $buildDeps \
  ## Instala as dependências para tempo de execução
