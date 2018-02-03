@@ -25,7 +25,6 @@ LABEL Name="PloneGovBR" \
 
 USER plone
 COPY site.cfg /plone/instance/
-COPY production.cfg /plone/instance/
 
 USER root
 COPY Dockerfile /root/buildinfo
