@@ -41,9 +41,6 @@ RUN buildDeps=" \
           libxml2-dev \
           libxslt1-dev \
           python-dev \
-          poppler-utils \
-          python-virtualenv \
-          wv \
           zlib1g-dev \
           " \
  && runDeps=" \
@@ -55,6 +52,7 @@ RUN buildDeps=" \
           nano \
           python-imaging \
           python-pip \
+          python-geopy \
           python-setuptools \
           sudo \
           " \
