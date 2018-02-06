@@ -59,6 +59,7 @@ RUN buildDeps=" \
             " \
  && apt-get update \
  ## Instala as dependências para tempo de compilação
+ && pip install geopy \
  && apt-get install -y --no-install-recommends $buildDeps \
  ## Instala as dependências para tempo de execução
  && apt-get install -y $runDeps \
