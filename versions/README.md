@@ -8,3 +8,5 @@ Esses arquivos adicionam os plugins:
 brasil.gov.facetada = 1.0b1
 brasil.gov.vlibrasnews = 1.0b1
 collective.opendata = 1.0a2
+
+Dependendo da versão pode conter pins para outros pacotes adicionais
