@@ -1,11 +1,13 @@
 FROM plone:4.3
 
+MAINTAINER "Elias Alves <elias.alves@ufvjm.edu.br>" 
+
 ARG BUILD_DATE
 ARG VCS_REF
 ARG BRANCHE_VCS
 
 LABEL Name="PloneGovBR" \
-      Maintainer="elias.alves@ufvjm.edu.br" \
+      Maintainer="Elias Alves" \
       Version=$BRANCHE_VCS \
       Architecture="x86_64" \
       Dockerfile_location="/root/buildinfo" \
