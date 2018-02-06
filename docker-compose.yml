@@ -15,7 +15,7 @@ services:
       - BACKENDS_PROBE_THRESHOLD=2
       - BACKENDS_PROBE_TIMEOUT=1s
       - BACKENDS_PROBE_WINDOW=3
-      - DNS_ENABLED=true
+      #- DNS_ENABLED=true
 
   haproxy:
     image: eeacms/haproxy
@@ -38,14 +38,18 @@ services:
       - zeoserver
     volumes:
       - data:/data
+      - ./log:/data/log/
     environment:
       - ZEO_SHARED_BLOB_DIR=on
 
   ploneidg:
-    image: unixelias/plone.idg:dev 
+    image: unixelias/plone.idg:dev
     depends_on:
       - zeoserver
+    volumes:
+      - ./log:/data/log/
     environment:
       - ZEO_ADDRESS=zeoserver:8100
 volumes:
   data:
+  blobdata:

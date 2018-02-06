@@ -31,31 +31,32 @@ COPY Dockerfile /root/buildinfo
 
 # Para Pillow
 RUN buildDeps=" \
-          build-essential \
-          git \
-          curl \
-          libbz2-dev \
-          libjpeg62-turbo-dev \
-          libreadline-gplv2-dev \
-          libssl-dev \
-          libxml2-dev \
-          libxslt1-dev \
-          python-dev \
-          zlib1g-dev \
-          " \
+            build-essential \
+            libbz2-dev \
+            libgeos-dev \
+            libjpeg62-turbo-dev \
+            libldap2-dev \
+            libreadline-gplv2-dev \
+            libsasl2-dev \
+            libssl-dev \
+            libxml2-dev \
+            libxslt1-dev \
+            python-dev \
+            zlib1g-dev \
+            " \
  && runDeps=" \
-          cron \
-          libgeos-c1 \
-          libgeos-dev \
-          libldap2-dev \
-          libsasl2-dev \
-          nano \
-          python-imaging \
-          python-pip \
-          python-geopy \
-          python-setuptools \
-          sudo \
-          " \
+            cron \
+            curl \
+            git \
+            libgeos-c1 \
+            nano \
+            python-imaging \
+            python-pip \
+            python-geopy \
+            python-openid \
+            python-setuptools \
+            sudo \
+            " \
  && apt-get update \
  ## Instala as dependências para tempo de compilação
  && apt-get install -y --no-install-recommends $buildDeps \
