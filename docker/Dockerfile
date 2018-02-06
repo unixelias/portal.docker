@@ -1,12 +1,12 @@
 FROM plone:4.3
 
-MAINTAINER Elias Alves <elias.alves@ufvjm.edu.br>
-
 ARG BUILD_DATE
 ARG VCS_REF
+ARG BRANCHE_VCS
 
 LABEL Name="PloneGovBR" \
-      Version="1.5.1" \
+      Maintainer="Elias Alves <elias.alves@ufvjm.edu.br>" \
+      Version=$BRANCHE_VCS \
       Architecture="x86_64" \
       Dockerfile_location="/root/buildinfo" \
       org.label-schema.build-date=$BUILD_DATE \
@@ -16,12 +16,12 @@ LABEL Name="PloneGovBR" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/unixelias/plone.idg" \
       org.label-schema.vendor="Elias Alves at UFVJM" \
-      org.label-schema.version="1.5.1" \
+      org.label-schema.version=$BRANCHE_VCS \
       org.label-schema.version="latest" \
       org.label-schema.version="stable" \
       org.label-schema.version="production" \
       org.label-schema.schema-version="1.0" \
-      org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg:latest"
+      org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg:'$BRANCHE_VCS'"
 
 USER plone
 COPY site.cfg /plone/instance/
@@ -29,7 +29,9 @@ COPY site.cfg /plone/instance/
 USER root
 COPY Dockerfile /root/buildinfo
 
-# Para Pillow
+ ## Instala as dependências:
+ ## $buildDeps para compilação
+ ## $runDeps para  execução
 RUN buildDeps=" \
             build-essential \
             libbz2-dev \
@@ -51,17 +53,14 @@ RUN buildDeps=" \
             libgeos-c1 \
             nano \
             python-imaging \
-            python-pip \
             python-geopy \
             python-openid \
             python-setuptools \
             sudo \
             " \
- && apt-get update \
- ## Instala as dependências para tempo de compilação
+ && apt-get update \ 
  && pip install geopy \
  && apt-get install -y --no-install-recommends $buildDeps \
- ## Instala as dependências para tempo de execução
  && apt-get install -y $runDeps \
  && sudo -u plone bin/buildout -c site.cfg -t 300 \
  && SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps \
