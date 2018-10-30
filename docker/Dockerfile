@@ -6,7 +6,7 @@ ARG BUILD_DATE
 ARG VCS_REF
 
 LABEL Name="PloneGovBR" \
-      Version="2.1rc1" \
+      Version=${TRAVIS_BRANCH} \
       Architecture="x86_64" \
       Dockerfile_location="/root/buildinfo" \
       org.label-schema.build-date=$BUILD_DATE \
@@ -16,9 +16,8 @@ LABEL Name="PloneGovBR" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/unixelias/plone.idg" \
       org.label-schema.vendor="Elias Alves at UFVJM" \
-      org.label-schema.version="2.1rc1" \
-      org.label-schema.version="dev" \
-      org.label-schema.version="unstable" \
+      org.label-schema.version=${TRAVIS_BRANCH} \
+      org.label-schema.version="stable" \
       org.label-schema.schema-version="1.0" \
       org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg:2.1rc1"
 
@@ -29,8 +28,7 @@ USER root
 COPY Dockerfile /root/buildinfo
 
 # Para Pillow
-RUN buildDeps=" \
-          build-essential \
+RUN buildDeps="build-essential \
           git \
           curl \
           libbz2-dev \
@@ -43,10 +41,8 @@ RUN buildDeps=" \
           poppler-utils \
           python-virtualenv \
           wv \
-          zlib1g-dev \
-          " \
- && runDeps=" \
-          cron \
+          zlib1g-dev"\
+ && runDeps="cron \
           libgeos-c1v5 \
           libgeos-dev \
           libldap2-dev \
@@ -55,8 +51,7 @@ RUN buildDeps=" \
           python-imaging \
           python-pip \
           python-setuptools \
-          sudo \
-          " \
+          sudo"\
  && apt-get update \
  ## Instala as dependências para tempo de compilação
  && apt-get install -y --no-install-recommends $buildDeps \
