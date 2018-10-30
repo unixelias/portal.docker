@@ -47,7 +47,7 @@ RUN buildDeps=" \
           " \
  && runDeps=" \
           cron \
-          libgeos-c1 \
+          libgeos-c1v5 \
           libgeos-dev \
           libldap2-dev \
           libsasl2-dev \
