@@ -18,12 +18,12 @@ LABEL Name="PloneGovBR" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/unixelias/plone.idg" \
       org.label-schema.vendor="Elias Alves at UFVJM" \
-      org.label-schema.version=$BRANCHE_VCS \
+      org.label-schema.version="2.1b1" \
       org.label-schema.version="latest" \
       org.label-schema.version="stable" \
       org.label-schema.version="production" \
       org.label-schema.schema-version="1.0" \
-      org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg:$BRANCHE_VCS"
+      org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg:2.1b1"
 
 USER plone
 COPY site.cfg /plone/instance/
