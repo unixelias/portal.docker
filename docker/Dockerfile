@@ -34,8 +34,7 @@ COPY Dockerfile /root/buildinfo
  ## Instala as dependências:
  ## $buildDeps para compilação
  ## $runDeps para  execução
-RUN buildDeps=" \
-            build-essential \
+RUN buildDeps="build-essential \
             libbz2-dev \
             libgeos-dev \
             libjpeg62-turbo-dev \
@@ -46,20 +45,17 @@ RUN buildDeps=" \
             libxml2-dev \
             libxslt1-dev \
             python-dev \
-            zlib1g-dev \
-            " \
- && runDeps=" \
-            cron \
+            zlib1g-dev"\
+ && runDeps="cron \
             curl \
             git \
-            libgeos-c1 \
+            libgeos-c1v5 \
             nano \
             python-imaging \
             python-geopy \
             python-openid \
             python-setuptools \
-            sudo \
-            " \
+            sudo"\
  && apt-get update \ 
  && pip install geopy \
  && apt-get install -y --no-install-recommends $buildDeps \
