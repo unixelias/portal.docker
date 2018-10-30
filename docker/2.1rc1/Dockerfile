@@ -6,7 +6,7 @@ ARG BUILD_DATE
 ARG VCS_REF
 
 LABEL Name="PloneGovBR" \
-      Version="2.0a2" \
+      Version="2.1rc1" \
       Architecture="x86_64" \
       Dockerfile_location="/root/buildinfo" \
       org.label-schema.build-date=$BUILD_DATE \
@@ -16,11 +16,11 @@ LABEL Name="PloneGovBR" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/unixelias/plone.idg" \
       org.label-schema.vendor="Elias Alves at UFVJM" \
-      org.label-schema.version="2.0a2" \
+      org.label-schema.version="2.1rc1" \
       org.label-schema.version="dev" \
       org.label-schema.version="unstable" \
       org.label-schema.schema-version="1.0" \
-      org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg:2.0a2"
+      org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg:2.1rc1"
 
 USER plone
 COPY site.cfg /plone/instance/
