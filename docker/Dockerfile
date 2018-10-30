@@ -33,7 +33,9 @@ RUN buildDeps="build-essential \
           curl \
           libbz2-dev \
           libjpeg62-turbo-dev \
+          libldap2-dev \
           libreadline-gplv2-dev \
+          libsasl2-dev \
           libssl-dev \
           libxml2-dev \
           libxslt1-dev \
@@ -43,10 +45,6 @@ RUN buildDeps="build-essential \
           wv \
           zlib1g-dev"\
  && runDeps="cron \
-          libgeos-c1v5 \
-          libgeos-dev \
-          libldap2-dev \
-          libsasl2-dev \
           nano \
           python-imaging \
           python-pip \
