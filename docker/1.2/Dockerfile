@@ -29,6 +29,7 @@ COPY site.cfg /plone/instance/
 USER root
 COPY Dockerfile /root/buildinfo
 
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 # Para Pillow 2.7.0
 RUN buildDeps=" \
           build-essential \

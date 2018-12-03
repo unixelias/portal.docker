@@ -28,6 +28,7 @@ USER root
 COPY Dockerfile /root/buildinfo
 
 # Para Pillow 2.7.0
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN buildDeps=" \
           build-essential \
           git \

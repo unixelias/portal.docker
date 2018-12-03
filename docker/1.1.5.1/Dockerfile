@@ -11,6 +11,7 @@ COPY site.cfg /plone/instance/
 USER root
 COPY Dockerfile /root/buildinfo
 
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 # Para Pillow 2.7.0
 RUN buildDeps="curl sudo python-setuptools python-dev python-ldap build-essential libldap2-dev libsasl2-dev libssl-dev libxml2-dev libxslt1-dev libbz2-dev libjpeg62-turbo-dev libyaml-dev libgeos-c1 libgeos-dev" \
  && runDeps="cron" \
